@@ -1,0 +1,33 @@
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Secrets / local config
+.env
+.env.*
+*.key
+*.pem
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Windsurf
+.windsurf/
+.windsurf-cache/
+.windsurf_cache/
+windsurf/
+
+# OS / tooling misc
+.DS_Store
