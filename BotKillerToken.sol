@@ -31,6 +31,8 @@ contract BotKillerToken {
     uint256 public totalStaked;
     uint256 public minStakeToBeAuditor;
 
+    event ValidationRecorded(address indexed auditor, bytes32 indexed responseHash, bool passed, uint256 timestamp, string details);
+
     event Staked(address indexed staker, uint256 amount);
     event Unstaked(address indexed staker, uint256 amount);
     event MinStakeUpdated(uint256 oldValue, uint256 newValue);
@@ -104,6 +106,12 @@ contract BotKillerToken {
 
     function isAuditor(address account) external view returns (bool) {
         return stakedBalance[account] >= minStakeToBeAuditor;
+    }
+
+    function recordValidation(bytes32 responseHash, bool passed, string calldata details) external returns (bool) {
+        require(stakedBalance[msg.sender] >= minStakeToBeAuditor, "NOT_AUDITOR");
+        emit ValidationRecorded(msg.sender, responseHash, passed, block.timestamp, details);
+        return true;
     }
 
     function stake(uint256 amount) external returns (bool) {

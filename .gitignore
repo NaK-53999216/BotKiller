@@ -19,6 +19,9 @@ $RECYCLE.BIN/
 *.key
 *.pem
 
+# Allow example env files
+!.env.example
+
 # Editor/IDE
 .vscode/
 .idea/
