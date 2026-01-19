@@ -498,8 +498,7 @@
             <div class="status" id="status">Status: not connected</div>
             <div class="fine">
               Notes:
-              <br />- This button sends a native POL transfer to the donation contract address.
-              <br />- Gas limit is set to 1,000,000 for Amoy compatibility.
+              <br />- This button sends a direct POL transfer to the protocol address.
               <br />- You control the transaction in MetaMask.
             </div>
           </div>
@@ -526,16 +525,6 @@
     import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@6.13.2/+esm";
 
     const DONATION_CONTRACT = "0x9C3B4622008E47fF3136338A9DE3bd6c594ac610";
-
-    const DONATION_ABI = [
-      {
-        "type": "function",
-        "name": "donate",
-        "stateMutability": "payable",
-        "inputs": [],
-        "outputs": [],
-      },
-    ];
 
     // Polygon Amoy chainId is 80002.
     const TARGET_CHAIN_ID = 80002;
@@ -670,19 +659,9 @@
         donateBtn.disabled = true;
         setStatus("Status: processing transaction...");
 
-        let tx;
         const txRequest = { to: DONATION_CONTRACT, value };
 
-        try {
-          const contract = new ethers.Contract(DONATION_CONTRACT, DONATION_ABI, signer);
-          const gasEstimate = await contract.donate.estimateGas({ value });
-          const gasLimit = (gasEstimate * 120n) / 100n;
-          tx = await contract.donate({ value, gasLimit });
-        } catch {
-          const gasEstimate = await signer.estimateGas(txRequest);
-          const gasLimit = (gasEstimate * 120n) / 100n;
-          tx = await signer.sendTransaction({ ...txRequest, gasLimit });
-        }
+        const tx = await signer.sendTransaction(txRequest);
 
         setStatus(`Status: sent. tx hash: ${tx.hash}\nWaiting for confirmation...`);
         const receipt = await tx.wait();
