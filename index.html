@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BotKiller — Sovereign, Anonymous AI Protocol</title>
-  <meta name="description" content="BotKiller is a P2P protocol for sovereign and anonymous AI. Support the revolution." />
+  <title>BotKiller Protocol — Unstoppable P2P AI</title>
+  <meta name="description" content="BotKiller is a decentralized P2P AI protocol where Workers provide compute, Auditors verify via staking, and users pay in credits that increase BOKI value." />
 
   <style>
     :root {
@@ -344,7 +344,7 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <h1>BotKiller</h1>
-          <p class="tag">Sovereign • Anonymous • P2P AI</p>
+          <p class="tag">Unstoppable • Anonymous • P2P AI</p>
         </div>
       </div>
 
@@ -357,41 +357,41 @@
     <section class="hero">
       <div class="panel">
         <div class="panel-inner">
-          <div class="kicker">Protocol Launch</div>
-          <h2 class="title">Build AI that can’t be censored, deplatformed, or surveilled.</h2>
+          <div class="kicker">BotKiller Protocol</div>
+          <h2 class="title">Unstoppable AI: no central servers, no corporate control.</h2>
           <p class="subtitle">
-            BotKiller is a peer-to-peer protocol for sovereign and anonymous AI. It separates usage from network growth:
-            users pay for AI usage (Coin A) while network incentives (Coin B) drive capacity, verification, and resilience —
-            making the system cheaper and stronger as it expands.
+            BotKiller is a decentralized P2P network designed to run AI beyond censorship and shutdown risk.
+            Workers provide compute. Auditors verify results through staking. Users pay in credits.
+            As adoption grows, BOKI (the network token) captures the upside of demand and security.
           </p>
 
           <div class="chips" aria-label="Key attributes">
-            <div class="chip">P2P routing</div>
-            <div class="chip">Auditors (Fiscals)</div>
-            <div class="chip">Staking incentives</div>
-            <div class="chip">Censorship resistance</div>
-            <div class="chip">Privacy by default</div>
+            <div class="chip">Workers = compute</div>
+            <div class="chip">Auditors = verification</div>
+            <div class="chip">Staking = trust cost</div>
+            <div class="chip">Credits = user payments</div>
+            <div class="chip">BOKI = network value</div>
           </div>
 
           <div class="cards" style="margin-top:16px;">
             <div class="card">
-              <h3>Sovereignty</h3>
-              <p>AI should run under the user’s control — not on rented gates that can be closed overnight.</p>
+              <h3>Workers</h3>
+              <p>Anyone can contribute compute. Workers execute tasks and earn from usage demand.</p>
             </div>
             <div class="card">
-              <h3>Anonymity</h3>
-              <p>Participation should not require identity. The network must work without centralized trust.</p>
+              <h3>Auditors</h3>
+              <p>Independent verifiers stake BOKI to validate outputs and create an economic cost for dishonesty.</p>
             </div>
             <div class="card">
-              <h3>Verification</h3>
-              <p>Fiscals stake and verify. Strong incentives, public proofs, and auditable trails.</p>
+              <h3>Credits → BOKI</h3>
+              <p>Users pay in credits. Network growth and verification pressure increase BOKI’s utility and value.</p>
             </div>
           </div>
 
           <div class="divider"></div>
 
           <p class="subtitle mono">
-            &gt; Mission: empower a future where AI is free to run, hard to censor, and economically driven by the network — not by gatekeepers.
+            &gt; Thesis: a distributed intelligence must be permissionless, anonymous by default, and economically self-defending.
           </p>
         </div>
       </div>
@@ -399,17 +399,17 @@
       <aside class="panel">
         <div class="panel-inner">
           <div class="kicker">Support the Revolution</div>
-          <h3 style="margin:10px 0 8px; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,255,102,0.92);">Donate POL via MetaMask</h3>
+          <h3 style="margin:10px 0 8px; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,255,102,0.92);">Donate POL on Amoy via MetaMask</h3>
           <p class="subtitle" style="margin-bottom: 14px;">
-            Your donation helps bootstrap infrastructure, auditors, and protocol research.
-            Donations are sent directly on-chain.
+            Early donors are funding the birth of an uncontrollable, distributed intelligence.
+            Your donation is an on-chain POL transfer to the verified protocol contract.
           </p>
 
           <div class="donation-box">
             <div class="row">
               <div>
                 <label for="networkSelect">Network</label>
-                <input id="networkSelect" type="text" value="Polygon (POL)" readonly />
+                <input id="networkSelect" type="text" value="Polygon Amoy (POL)" readonly />
               </div>
               <div>
                 <label for="amount">Amount (POL)</label>
@@ -423,7 +423,7 @@
             </div>
 
             <div style="margin-top: 14px; display:flex; gap:10px; flex-wrap: wrap;">
-              <button class="btn" id="switchBtn" type="button">Switch to Polygon</button>
+              <button class="btn" id="switchBtn" type="button">Switch to Amoy</button>
               <button class="btn primary" id="donateBtn" type="button" disabled>Donate</button>
             </div>
 
@@ -431,6 +431,7 @@
             <div class="fine">
               Notes:
               <br />- This button sends a native POL transfer to the donation contract address.
+              <br />- Gas limit is set to 1,000,000 for Amoy compatibility.
               <br />- You control the transaction in MetaMask.
             </div>
           </div>
@@ -458,8 +459,8 @@
 
     const DONATION_CONTRACT = "0x9C3B4622008E47fF3136338A9DE3bd6c594ac610";
 
-    // Polygon mainnet chainId is 137. If you want Amoy (80002) change TARGET_CHAIN_ID.
-    const TARGET_CHAIN_ID = 137;
+    // Polygon Amoy chainId is 80002.
+    const TARGET_CHAIN_ID = 80002;
 
     const chainParamsById = {
       137: {
@@ -580,6 +581,7 @@
         const tx = await signer.sendTransaction({
           to: DONATION_CONTRACT,
           value,
+          gasLimit: 1_000_000n,
         });
 
         setStatus(`Status: sent. tx hash: ${tx.hash}\nWaiting for confirmation...`);
