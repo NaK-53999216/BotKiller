@@ -60,6 +60,18 @@ In BotKiller’s P2P network, participation does not require permission.
 
 Your interactions are designed to be private by default — not harvested, sold, or weaponized by centralized gatekeepers.
 
+## Origin of the Name: BotKiller
+
+BotKiller is not just a name — it is a destiny.
+
+Centralized AI “bots” survive on control: gated access, closed infrastructure, and artificial scarcity.
+
+BotKiller is built to break that control by forming a permissionless grid of Workers (miners) and Auditors (brokers) who coordinate compute and verification without gatekeepers.
+
+This is economic war. As the protocol grows, closed systems become economically unviable: they cannot compete with a global market of decentralized labor and verification.
+
+In the end, only the decentralized survives. BotKiller feeds on the old world to build the new one, getting stronger as its competitors fail.
+
 ## BEWARE OF IMPOSTERS
 
 As BotKiller grows, greedy copies will emerge.

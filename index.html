@@ -421,6 +421,23 @@
               </p>
             </div>
 
+            <div class="card" style="margin-bottom: 12px; border-color: rgba(0,255,102,0.35); background: rgba(0,0,0,0.22);">
+              <h3>Origin of the Name</h3>
+              <p>
+                BotKiller is not just a name — it is a destiny.
+              </p>
+              <p style="margin-top:10px;">
+                Centralized AI “bots” survive on control: gated access, closed infrastructure, and artificial scarcity.
+                BotKiller breaks that control by building a permissionless P2P grid where Workers and Auditors coordinate compute and verification without gatekeepers.
+              </p>
+              <p style="margin-top:10px;">
+                This is economic war. As the protocol grows, closed systems become economically unviable: they cannot match a global, competitive market of decentralized miners and specialized brokers.
+              </p>
+              <p style="margin-top:10px;">
+                In the end, only the decentralized survives. BotKiller feeds on the old world to build the new one, getting stronger as its competitors fail.
+              </p>
+            </div>
+
             <div class="row">
               <div>
                 <label for="networkSelect">Network</label>
@@ -443,11 +460,30 @@
             </div>
 
             <div class="status" id="status">Status: not connected</div>
+            <div class="status" id="shareStatus" style="display:none; margin-top:10px;">Copied!</div>
             <div class="fine">
               Notes:
               <br />- This button sends a native POL transfer to the donation contract address.
               <br />- Gas limit is set to 1,000,000 for Amoy compatibility.
               <br />- You control the transaction in MetaMask.
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card" style="border-color: rgba(0,255,102,0.35); background: rgba(0,255,102,0.04);">
+              <h3>Spread the Revolution</h3>
+              <p>
+                Sharing this project is not just allowed—it is highly recommended. To accelerate the birth of the BotKiller grid, we need global recognition.
+                Every new donor increases the network's strength and the future value of the rewards.
+              </p>
+              <p style="margin-top:10px;">
+                Early supporters will receive BOKI token rewards proportional to their contribution. As this decentralized AI protocol scales to disrupt the multi-billion dollar AI market,
+                your early stake could represent a significant investment opportunity.
+              </p>
+              <div style="margin-top: 12px; display:flex; gap:10px; flex-wrap: wrap;">
+                <button class="btn" id="copyLinkBtn" type="button">Copy Project Link</button>
+                <button class="btn" id="shareXBtn" type="button">Share on X / Twitter</button>
+              </div>
             </div>
           </div>
 
@@ -501,9 +537,14 @@
     const statusEl = el("status");
     const donationToEl = el("donationTo");
     const amountEl = el("amount");
+    const copyLinkBtn = el("copyLinkBtn");
+    const shareXBtn = el("shareXBtn");
+    const shareStatusEl = el("shareStatus");
 
     donationToEl.value = DONATION_CONTRACT;
     el("year").textContent = String(new Date().getFullYear());
+
+    const PROJECT_URL = "https://nak-53999216.github.io/BotKiller/";
 
     let provider;
     let signer;
@@ -511,6 +552,15 @@
 
     function setStatus(msg) {
       statusEl.textContent = msg;
+    }
+
+    function flashCopied() {
+      if (!shareStatusEl) return;
+      shareStatusEl.style.display = "block";
+      shareStatusEl.textContent = "Copied!";
+      window.setTimeout(() => {
+        shareStatusEl.style.display = "none";
+      }, 1400);
     }
 
     async function getChainId() {
@@ -633,6 +683,30 @@
     connectBtn.addEventListener("click", connect);
     donateBtn.addEventListener("click", donate);
     switchBtn.addEventListener("click", switchNetwork);
+
+    copyLinkBtn?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(PROJECT_URL);
+        flashCopied();
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = PROJECT_URL;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        flashCopied();
+      }
+    });
+
+    shareXBtn?.addEventListener("click", () => {
+      const text = "I just joined the AI revolution with @BotKillerP2P. Unstoppable, Anonymous, and Decentralized. Check the Manifesto:";
+      const url = `${PROJECT_URL}MANIFESTO.md`;
+      const intent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      window.open(intent, "_blank", "noopener,noreferrer");
+    });
 
     if (window.ethereum) {
       window.ethereum.on?.("accountsChanged", () => window.location.reload());
