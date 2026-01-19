@@ -19,18 +19,9 @@ $RECYCLE.BIN/
 *.key
 *.pem
 
-# Allow example env files
-!.env.example
-
 # Editor/IDE
 .vscode/
 .idea/
-
-# Windsurf
-.windsurf/
-.windsurf-cache/
-.windsurf_cache/
-windsurf/
 
 # OS / tooling misc
 .DS_Store
