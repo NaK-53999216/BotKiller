@@ -1,68 +1,71 @@
 # BotKiller Manifesto
 
-BotKiller is a peer-to-peer (P2P) protocol for sovereign and anonymous AI.
+BotKiller is a peer-to-peer (P2P) protocol for sovereign, anonymous AI.
 
-We believe AI should be:
-
-- Sovereign: running under the user’s control, not rented at the mercy of centralized platforms.
-- Anonymous by default: identity is not a prerequisite for participation.
-- Permissionless: anyone can join, build, verify, and contribute.
-
-## The Protocol
-
-BotKiller coordinates a decentralized network of nodes that provide AI execution, routing, and verification.
-
-The protocol is designed so that no single entity controls:
-
-- who can access the network,
-- which models can be served,
-- how pricing evolves,
-- or how verification is performed.
-
-## Two-Currency Model: Coin A and Coin B
-
-BotKiller’s economics separate *usage* from *network growth*.
-
-### Coin A: user cost
-
-Coin A is the user-facing unit of account for consuming AI services through BotKiller (requests, inference, routing, storage, bandwidth, etc.). Users care about predictable and low costs.
-
-### Coin B: network growth
-
-Coin B is the network-growth token. It aligns long-term incentives for:
-
-- node operators,
-- builders,
-- auditors (“fiscals”),
-- and the broader ecosystem.
-
-The key mechanism is:
-
-- When Coin B grows in value and distribution, the network can subsidize, optimize, and expand capacity.
-- This growth lowers the effective cost of usage in Coin A.
-
-In short:
-
-- Coin B grows the network.
-- Network growth makes Coin A cheaper for users.
-
-## Auditors (“Fiscals”) and Staking
-
-BotKiller supports organizations that want to act as independent auditors (fiscals).
-
-Auditors stake Coin B to signal commitment and to create measurable cost for dishonest behavior. Staking is a simple on-chain primitive that can be extended over time into richer verification, reputation, and slashing mechanisms.
-
-## Principles
-
-- Privacy is a feature, not an afterthought.
-- Participation must not require permission.
-- Resilience beats convenience.
-- Incentives must favor users and network longevity.
+This is not another “platform.” This is a refusal.
 
 ## The Mission
 
-BotKiller exists to enable a future where AI is:
+BotKiller exists to strip AI power from Big Tech.
 
-- free to run,
-- hard to censor,
-- and economically driven by the network, not by gatekeepers.
+We are ending the era where corporations own your data, rent you access to intelligence, and decide what your AI can or cannot say.
+
+AI must be:
+
+- Private by default
+- Permissionless to use and build
+- Unstoppable to censor
+
+## A New Economy (Not Just Code)
+
+BotKiller is not just a protocol — it is a job market.
+
+It creates a specialized global workforce built around two roles:
+
+### Workers (Miners)
+
+Workers provide compute power to the network.
+
+- They execute tasks.
+- They return outputs.
+- They are compensated by demand.
+
+### Auditors (Brokers)
+
+Auditors specialize in categories (domains, safety constraints, logic, factuality, or any verification specialty required by the market) and verify AI outputs.
+
+- They stake to qualify.
+- They validate results.
+- They create an economic cost to fraud.
+
+This is how BotKiller scales: compute is abundant, and trust becomes a profession.
+
+## The Dual-Token Engine
+
+BotKiller separates everyday usage from long-term value capture.
+
+### Credits (Utility)
+
+Credits are the user-facing utility for daily tasks. They are designed for predictable access and affordability.
+
+### BOKI (Value Capture)
+
+BOKI is the network’s value-capture currency. It aligns Workers, Auditors, builders, and supporters behind the growth and security of the protocol.
+
+Credits are for consumption. BOKI is for ownership of the network’s upside.
+
+## Privacy and Permissionlessness
+
+In BotKiller’s P2P network, participation does not require permission.
+
+Your interactions are designed to be private by default — not harvested, sold, or weaponized by centralized gatekeepers.
+
+## BEWARE OF IMPOSTERS
+
+As BotKiller grows, greedy copies will emerge.
+
+These clones are driven by selfish profit and lack our decentralized soul.
+
+Authentic support happens ONLY through this protocol and the verified contract:
+
+`0x9C3B4622008E47fF3136338A9DE3bd6c594ac610`
