@@ -659,7 +659,7 @@
         donateBtn.disabled = true;
         setStatus("Status: processing transaction...");
 
-        const txRequest = { to: DONATION_CONTRACT, value, data: "0x", gasLimit: 50000n };
+        const txRequest = { to: DONATION_CONTRACT, value, data: "0x", gasLimit: 50000n, chainId: TARGET_CHAIN_ID };
 
         const tx = await signer.sendTransaction(txRequest);
 
