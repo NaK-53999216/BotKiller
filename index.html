@@ -527,6 +527,16 @@
 
     const DONATION_CONTRACT = "0x9C3B4622008E47fF3136338A9DE3bd6c594ac610";
 
+    const DONATION_ABI = [
+      {
+        "type": "function",
+        "name": "donate",
+        "stateMutability": "payable",
+        "inputs": [],
+        "outputs": [],
+      },
+    ];
+
     // Polygon Amoy chainId is 80002.
     const TARGET_CHAIN_ID = 80002;
 
@@ -660,11 +670,18 @@
         donateBtn.disabled = true;
         setStatus("Status: waiting for MetaMask confirmation...");
 
-        const tx = await signer.sendTransaction({
-          to: DONATION_CONTRACT,
-          value,
-          gasLimit: 1_000_000n,
-        });
+        let tx;
+        try {
+          const contract = new ethers.Contract(DONATION_CONTRACT, DONATION_ABI, signer);
+          const gasEstimate = await contract.donate.estimateGas({ value });
+          const gasLimit = (gasEstimate * 120n) / 100n;
+          tx = await contract.donate({ value, gasLimit });
+        } catch {
+          const txRequest = { to: DONATION_CONTRACT, value };
+          const gasEstimate = await signer.estimateGas(txRequest);
+          const gasLimit = (gasEstimate * 120n) / 100n;
+          tx = await signer.sendTransaction({ ...txRequest, gasLimit });
+        }
 
         setStatus(`Status: sent. tx hash: ${tx.hash}\nWaiting for confirmation...`);
         const receipt = await tx.wait();
