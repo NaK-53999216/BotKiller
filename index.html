@@ -668,16 +668,17 @@
 
       try {
         donateBtn.disabled = true;
-        setStatus("Status: waiting for MetaMask confirmation...");
+        setStatus("Status: processing transaction...");
 
         let tx;
+        const txRequest = { to: DONATION_CONTRACT, value };
+
         try {
           const contract = new ethers.Contract(DONATION_CONTRACT, DONATION_ABI, signer);
           const gasEstimate = await contract.donate.estimateGas({ value });
           const gasLimit = (gasEstimate * 120n) / 100n;
           tx = await contract.donate({ value, gasLimit });
         } catch {
-          const txRequest = { to: DONATION_CONTRACT, value };
           const gasEstimate = await signer.estimateGas(txRequest);
           const gasLimit = (gasEstimate * 120n) / 100n;
           tx = await signer.sendTransaction({ ...txRequest, gasLimit });
